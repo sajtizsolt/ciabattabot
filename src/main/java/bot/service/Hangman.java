@@ -1,7 +1,7 @@
 package bot.service;
 
 import bot.actualcommands.textcommands.HangmanCommand;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

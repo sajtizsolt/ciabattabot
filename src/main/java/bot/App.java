@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
@@ -57,7 +57,7 @@ public class App extends ListenerAdapter {
 
     private static List<GatewayIntent> getIntents() {
         List<GatewayIntent> ret = new ArrayList<>();
-        ret.add(GatewayIntent.GUILD_EMOJIS);
+        ret.add(GatewayIntent.GUILD_EMOJIS_AND_STICKERS);
         ret.add(GatewayIntent.GUILD_MESSAGES);
         ret.add(GatewayIntent.GUILD_MEMBERS);
         ret.add(GatewayIntent.GUILD_PRESENCES);
@@ -70,7 +70,11 @@ public class App extends ListenerAdapter {
 
         try {
 
-            jda = JDABuilder.create(readToken(), getIntents()).setMemberCachePolicy(MemberCachePolicy.ALL).build().awaitReady();
+            jda = JDABuilder
+                    .create(readToken(), getIntents()).setMemberCachePolicy(MemberCachePolicy.ALL)
+                    .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                    .build()
+                    .awaitReady();
 
             Constants.setDefaultTextChannels(Collections.unmodifiableMap(retrieveDefaultChannels()));
 

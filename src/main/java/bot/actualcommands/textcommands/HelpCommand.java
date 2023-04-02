@@ -2,7 +2,7 @@ package bot.actualcommands.textcommands;
 
 import bot.commandmanagement.ICommand;
 import bot.utils.Constants;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Map;

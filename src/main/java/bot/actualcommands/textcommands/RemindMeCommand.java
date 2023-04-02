@@ -3,8 +3,8 @@ package bot.actualcommands.textcommands;
 import bot.commandmanagement.ICommand;
 import bot.utils.Constants;
 import bot.service.Reminder;
-import net.dv8tion.jda.api.entities.GuildChannel;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.GuildChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.io.IOException;

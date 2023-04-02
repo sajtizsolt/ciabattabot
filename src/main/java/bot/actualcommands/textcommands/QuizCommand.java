@@ -8,8 +8,8 @@ import bot.utils.Utils;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.GuildChannel;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.GuildChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,7 +142,7 @@ public class QuizCommand implements ICommand {
             }, true);
         };
 
-        channel = event.getTextChannel();
+        channel = event.getChannel().asTextChannel();
         if (args.length == 1 && !QUESTION_ACTIVE) {
             for (var t : reminder.getTasksWithPrescheduledJobs().entrySet())
                 if (t.getValue()) // if deletable

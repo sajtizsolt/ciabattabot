@@ -65,7 +65,7 @@ public class ZipCommand implements ICommand {
             List<Message> retrievedMessages = getMessages(event.getMessage().getReferencedMessage(), messageCode);
             convertMessagesToHTML(retrievedMessages);
             LOGGER.info("Zipped messages with name " + path.substring(7));
-            event.getChannel().sendFile(new File(compressDirectoryToZipFile(path))).queue();
+            // TODO: event.getChannel().sendFile(new File(compressDirectoryToZipFile(path))).queue();
         }
     }
 

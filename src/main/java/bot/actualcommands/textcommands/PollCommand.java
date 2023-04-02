@@ -53,8 +53,9 @@ public class PollCommand implements ICommand {
         }
 
         event.getChannel().sendMessageEmbeds(createEmbed(question.toString()).build()).queue(message -> {
-            for (var i = 0; i < answerList.size() && i < numberOfEmojis; i++)
-                message.addReaction((i + 1) + "\u20E3").queue();
+            // TODO
+            // for (var i = 0; i < answerList.size() && i < numberOfEmojis; i++)
+                // message.addReaction((i + 1) + "\u20E3").queue();
         });
     }
 

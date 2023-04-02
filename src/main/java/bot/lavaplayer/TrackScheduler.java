@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
+import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -95,7 +96,7 @@ public class TrackScheduler extends AudioEventAdapter {
             player.destroy();
         }
 
-        if (!Utils.isActualUserLeftInVoiceChannel(event.getJDA().getAudioManagers().get(0).getConnectedChannel()))
+        if (!Utils.isActualUserLeftInVoiceChannel(Objects.requireNonNull(event.getJDA().getAudioManagers().get(0).getConnectedChannel()).asVoiceChannel()))
             event.getJDA().getAudioManagers().get(0).closeAudioConnection();
 
         // endReason == FINISHED: A track finished or died by an exception (mayStartNext = true).

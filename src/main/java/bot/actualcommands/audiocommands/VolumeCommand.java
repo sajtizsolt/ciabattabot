@@ -5,7 +5,7 @@ import bot.utils.Constants;
 import bot.lavaplayer.GuildAudioManager;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.VoiceChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class VolumeCommand implements ICommand {

@@ -3,7 +3,7 @@ package bot.commandmanagement.imagecommands;
 import bot.utils.Constants;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -116,7 +116,7 @@ public class ImageManager {
 
             try {
                 File f = new File(imageInFolder);
-                channel.sendFile(f).queue();
+                // TODO: channel.sendFile(f).queue();
             } catch (Exception e) {
                 e.printStackTrace();
                 channel.sendMessage("Internal error, check logs for information").queue();

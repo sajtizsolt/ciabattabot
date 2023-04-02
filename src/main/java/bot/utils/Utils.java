@@ -4,7 +4,7 @@ import bot.service.Translator;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.VoiceChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import javax.annotation.Nullable;
