@@ -12,7 +12,7 @@ plugins {
 
     // Apply the application plugin to add support for building an application
     id 'application'
-	
+
 	//id 'com.github.johnrengelman.shadow' version '6.0.0' // only for Gradle 6+
 }
 
@@ -35,7 +35,6 @@ repositories {
         url 'https://m2.dv8tion.net/releases'
         name 'm2-dv8tion'
     }
-    jcenter()
     maven {
         url 'https://dl.bintray.com/sedmelluq/com.sedmelluq'
         maven { url 'https://jitpack.io' }
