@@ -17,7 +17,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("bot.App")
+    mainClass.set("bot.MainKt")
 }
 
 tasks.withType(JavaCompile::class) {
