@@ -44,6 +44,6 @@ repositories {
 }
 
 // Define the main class for the application
-mainClassName = 'Bot.App'
+mainClassName = 'bot.App'
 
 compileJava.options.encoding = 'UTF-8'
