@@ -1,6 +1,8 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("java")
-    id("application")
+    application
+    java
+    alias(libs.plugins.kotlin.jvm)
 }
 
 dependencies {
