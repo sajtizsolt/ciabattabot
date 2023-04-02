@@ -1,0 +1,19 @@
+[versions]
+apache-commons-lang3-version = "3.12.0"
+discord-api-version = "5.0.0-beta.6"
+google-cloud-translate-version = "1.88.0"
+lavaplayer-fork-version = "1.3.96"
+logback-classic-version = "1.2.3"
+jikan4java-version = "v1.4.2"
+json-version = "20210307"
+zip4j-version = "2.8.0"
+
+[libraries]
+apache-commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "apache-commons-lang3-version" }
+discord-api = { module = "net.dv8tion:JDA", version.ref = "discord-api-version" }
+google-cloud-translate = { module = "com.google.cloud:google-cloud-translate", version.ref = "google-cloud-translate-version" }
+lavaplayer-fork = { module = "com.github.Walkyst:lavaplayer-fork", version.ref = "lavaplayer-fork-version" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic-version" }
+jikan4java = { module = "com.github.Doomsdayrs:Jikan4java", version.ref = "jikan4java-version" }
+json = { module = "org.json:json", version.ref = "json-version" }
+zip4j = { module = "net.lingala.zip4j:zip4j", version.ref = "zip4j-version" }

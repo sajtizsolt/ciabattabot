@@ -4,14 +4,14 @@ plugins {
 }
 
 dependencies {
-    implementation("net.dv8tion:JDA:5.0.0-beta.6")
-    implementation("com.google.cloud:google-cloud-translate:1.88.0")
-    implementation("com.github.Walkyst:lavaplayer-fork:1.3.96")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
-    implementation("com.github.Doomsdayrs:Jikan4java:v1.4.2")
-    implementation("org.json:json:20210307")
-    implementation("org.apache.commons:commons-lang3:3.12.0")
-    implementation("net.lingala.zip4j:zip4j:2.8.0")
+    implementation(libs.apache.commons.lang3)
+    implementation(libs.discord.api)
+    implementation(libs.google.cloud.translate)
+    implementation(libs.lavaplayer.fork)
+    implementation(libs.logback.classic)
+    implementation(libs.jikan4java)
+    implementation(libs.json)
+    implementation(libs.zip4j)
 }
 
 application {
