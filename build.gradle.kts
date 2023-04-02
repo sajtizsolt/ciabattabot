@@ -14,6 +14,10 @@ dependencies {
     implementation(libs.jikan4java)
     implementation(libs.json)
     implementation(libs.zip4j)
+
+    testImplementation(libs.junit.jupiter.api)
+
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 application {
@@ -22,4 +26,8 @@ application {
 
 tasks.withType(JavaCompile::class) {
     options.encoding = "UTF-8"
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
