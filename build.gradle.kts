@@ -3,6 +3,7 @@ plugins {
     application
     java
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.johnrengelman.shadow)
 }
 
 dependencies {
@@ -24,10 +25,8 @@ application {
     mainClass.set("bot.MainKt")
 }
 
-tasks.withType(JavaCompile::class) {
-    options.encoding = "UTF-8"
-}
-
-tasks.test {
-    useJUnitPlatform()
+tasks {
+    withType(JavaCompile::class) {
+        options.encoding = "UTF-8"
+    }
 }
