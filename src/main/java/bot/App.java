@@ -27,7 +27,7 @@ public class App extends ListenerAdapter {
     private static JDA jda;
 
     private static String readToken() {
-        String token = Utils.getPropertiesFromResourceFile("config/ConfigurationKeys.properties").getProperty("DiscordToken");
+        String token = System.getenv("DISCORD_BOT_TOKEN");
 
         if (StringUtils.isBlank(token))
             throw new IllegalArgumentException("Discord bot token is missing!");
