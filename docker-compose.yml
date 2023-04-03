@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  ciabattabot:
+    image: ciabattabot:latest
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - "DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}"
+    environment:
+      JAVA_OPTS: "-Xmx512m"
+      DISCORD_BOT_TOKEN:

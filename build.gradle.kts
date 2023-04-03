@@ -29,4 +29,14 @@ tasks {
     withType(JavaCompile::class) {
         options.encoding = "UTF-8"
     }
+
+    register<Exec>("dockerComposeUp") {
+        val ciabattaBotDiscordBotToken: String by project
+        group = "docker"
+        description = "Starts the docker-compose.yml file"
+        environment = environment + mapOf(
+            "DISCORD_BOT_TOKEN" to ciabattaBotDiscordBotToken,
+        )
+        commandLine = "docker-compose -f ${project.rootDir}/docker-compose.yml up -d --build".split(" ")
+    }
 }
