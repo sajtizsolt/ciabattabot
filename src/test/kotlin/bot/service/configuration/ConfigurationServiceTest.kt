@@ -32,17 +32,44 @@ class ConfigurationServiceTest {
     }
 
     @Test
+    fun `when discord bot command prefix is set, then its value is returned by the getter`() {
+        // Given
+        val expectedReturnValue = "discord-bot-command-prefix-value"
+        mockkObject(ConfigurationService)
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.DISCORD_BOT_COMMAND_PREFIX_VARIABLE_NAME) } returns expectedReturnValue
+
+        // When
+        val discordBotCommandPrefix = ConfigurationService.getDiscordBotCommandPrefix()
+
+        // Then
+        assertEquals(expectedReturnValue, discordBotCommandPrefix)
+    }
+
+    @Test
+    fun `when discord bot command prefix is missing, then then the default value is returned by the getter`() {
+        // Given
+        mockkObject(ConfigurationService)
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.DISCORD_BOT_COMMAND_PREFIX_VARIABLE_NAME) } returns null
+
+        // When
+        val discordBotCommandPrefix = ConfigurationService.getDiscordBotCommandPrefix()
+
+        // Then
+        assertEquals(ConfigurationService.DISCORD_BOT_COMMAND_PREFIX_DEFAULT_VALUE, discordBotCommandPrefix)
+    }
+
+    @Test
     fun `when discord bot token is set, then its value is returned by the getter`() {
         // Given
-        val returnValue = "discord-bot-token-value"
+        val expectedReturnValue = "discord-bot-token-value"
         mockkObject(ConfigurationService)
-        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.DISCORD_BOT_TOKEN_VARIABLE_NAME) } returns returnValue
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.DISCORD_BOT_TOKEN_VARIABLE_NAME) } returns expectedReturnValue
 
         // When
         val discordBotToken = ConfigurationService.getDiscordBotToken()
 
         // Then
-        assertEquals(returnValue, discordBotToken)
+        assertEquals(expectedReturnValue, discordBotToken)
     }
 
     @Test

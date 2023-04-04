@@ -16,16 +16,19 @@ CiabattaBot is designed to get its configuration from environment variables.
 As you might want to run the bot using Docker, the ideal way to provide configuration is to set some variables in your `gradle.properties` file.
 The following table shows all available configuration keys.
 
-| `gradle.properties` key | Environment variable | Required?          | Description |
-|-------------------------|----------------------|--------------------|-------------|
-| `ciabattaBotDiscordBotToken` | `DISCORD_BOT_TOKEN` | :heavy_check_mark: | The bot token of your Discord bot. |
+| `gradle.properties` key              | Environment variable         | Required?          | Default value | Description                             |
+|--------------------------------------|------------------------------|--------------------|---------------|-----------------------------------------|
+| `ciabattaBotDiscordBotToken`         | `DISCORD_BOT_TOKEN`          | :heavy_check_mark: | -             | The bot token of your Discord bot.      |
+| `ciabattaBotDiscordBotCommandPrefix` | `DISCORD_BOT_COMMAND_PREFIX` | :x:                | `!`           | The command prefix of your Discord bot. |
 
 You can find your `gradle.properties` file in the following locations, depending on your operating system:
+
 - Windows: `%USERPROFILE%\.gradle\gradle.properties`
 - Linux: `~/.gradle/gradle.properties`
 - macOS: `~/.gradle/gradle.properties`
 
-After you have set the required configuration keys, you can run build and run the Docker image using the following command:
+After you have set the required configuration keys, you can run build and run the Docker image using the following
+command:
 
 ```shell
 ./gradlew dockerComposeUp

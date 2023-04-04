@@ -4,6 +4,7 @@ ENV GRADLE_USER_HOME /app/.gradle
 ENV GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx2g"
 
 ARG DISCORD_BOT_TOKEN
+ARG DISCORD_BOT_COMMAND_PREFIX
 ARG PROJECT=ciabattabot
 
 WORKDIR /app
@@ -12,6 +13,7 @@ COPY . .
 
 RUN ./gradlew clean shadowJar --no-daemon \
     -Pkotlin.compiler.execution.strategy=in-process \
+    -PciabattaBotDiscordBotCommandPrefix=${DISCORD_BOT_COMMAND_PREFIX} \
     -PciabattaBotDiscordBotToken=${DISCORD_BOT_TOKEN}
 
 FROM eclipse-temurin:17.0.6_10-jre-alpine

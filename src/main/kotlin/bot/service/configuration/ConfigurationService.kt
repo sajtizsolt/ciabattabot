@@ -4,7 +4,10 @@ import org.apache.commons.lang3.StringUtils
 
 object ConfigurationService {
 
+    internal const val DISCORD_BOT_COMMAND_PREFIX_VARIABLE_NAME = "DISCORD_BOT_COMMAND_PREFIX"
     internal const val DISCORD_BOT_TOKEN_VARIABLE_NAME = "DISCORD_BOT_TOKEN"
+
+    internal const val DISCORD_BOT_COMMAND_PREFIX_DEFAULT_VALUE = "!"
 
     internal val MANDATORY_VARIABLES = setOf(
         DISCORD_BOT_TOKEN_VARIABLE_NAME,
@@ -17,7 +20,10 @@ object ConfigurationService {
         }
     }
 
-    fun getDiscordBotToken(): String =
+    fun getDiscordBotCommandPrefix() =
+        getEnvironmentVariable(DISCORD_BOT_COMMAND_PREFIX_VARIABLE_NAME) ?: DISCORD_BOT_COMMAND_PREFIX_DEFAULT_VALUE
+
+    fun getDiscordBotToken() =
         getEnvironmentVariable(DISCORD_BOT_TOKEN_VARIABLE_NAME)
             ?: throw IllegalStateException("Missing environment variable: $DISCORD_BOT_TOKEN_VARIABLE_NAME")
 
