@@ -17,6 +17,7 @@ dependencies {
     implementation(libs.zip4j)
 
     testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.mockk)
 
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
@@ -26,6 +27,10 @@ application {
 }
 
 tasks {
+    test {
+        useJUnitPlatform()
+    }
+
     withType(JavaCompile::class) {
         options.encoding = "UTF-8"
     }
