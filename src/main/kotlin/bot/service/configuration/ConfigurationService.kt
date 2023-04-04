@@ -4,14 +4,14 @@ import org.apache.commons.lang3.StringUtils
 
 object ConfigurationService {
 
-    private const val DISCORD_BOT_TOKEN_VARIABLE_NAME = "DISCORD_BOT_TOKEN"
+    internal const val DISCORD_BOT_TOKEN_VARIABLE_NAME = "DISCORD_BOT_TOKEN"
 
-    private val MANDATORY_VARIABLES = setOf(
+    internal val MANDATORY_VARIABLES = setOf(
         DISCORD_BOT_TOKEN_VARIABLE_NAME,
     )
 
     fun validateEnvironmentVariables() {
-        val missingMandatoryVariables = MANDATORY_VARIABLES.filter { StringUtils.isBlank(System.getenv(it)) }
+        val missingMandatoryVariables = MANDATORY_VARIABLES.filter { StringUtils.isBlank(getEnvironmentVariable(it)) }
         if (missingMandatoryVariables.isNotEmpty()) {
             throw IllegalStateException("Missing mandatory environment variables: $missingMandatoryVariables")
         }
