@@ -1,12 +1,13 @@
 package bot.service.jda
 
+import bot.eventListener.MainEventListener
 import bot.service.configuration.ConfigurationService
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
-import net.dv8tion.jda.api.hooks.EventListener
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
+import net.dv8tion.jda.api.utils.cache.CacheFlag
 
 object JdaProviderService {
 
@@ -19,12 +20,13 @@ object JdaProviderService {
         return jda
     }
 
-    private fun buildJda(vararg listeners: EventListener): JDA {
+    private fun buildJda(): JDA {
         val jda = JDABuilder
             .create(ConfigurationService.getDiscordBotToken(), buildIntents())
             .setMemberCachePolicy(MemberCachePolicy.ALL)
             .enableIntents(GatewayIntent.MESSAGE_CONTENT)
-            .addEventListeners(listeners)
+            .disableCache(CacheFlag.SCHEDULED_EVENTS)
+            .addEventListeners(MainEventListener())
             .build()
             .awaitReady()
         jda.presence.activity = Activity.listening("your commands")
