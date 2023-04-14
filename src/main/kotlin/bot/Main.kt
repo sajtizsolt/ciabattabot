@@ -1,12 +1,13 @@
 package bot
 
 import bot.service.configuration.ConfigurationService
+import bot.service.jda.JdaProviderService
 
-fun main() =
+fun main(vararg arguments: String) {
     try {
         ConfigurationService.validateEnvironmentVariables()
-
-        App.main(emptyArray())
+        JdaProviderService.getInstance()
     } catch (e: Exception) {
         e.printStackTrace()
     }
+}
