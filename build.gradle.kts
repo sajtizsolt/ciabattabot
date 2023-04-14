@@ -10,10 +10,11 @@ dependencies {
     implementation(libs.apache.commons.lang3)
     implementation(libs.discord.api)
     implementation(libs.google.cloud.translate)
-    implementation(libs.lavaplayer.fork)
-    implementation(libs.logback.classic)
     implementation(libs.jikan4java)
     implementation(libs.json)
+    implementation(libs.kotlin.logging)
+    implementation(libs.lavaplayer.fork)
+    implementation(libs.logback.classic)
     implementation(libs.zip4j)
 
     testImplementation(libs.junit.jupiter.api)
