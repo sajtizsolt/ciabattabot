@@ -1,7 +1,9 @@
 package bot.service.eventHandler
 
-import bot.commandmanagement.GeneralCommandManager
-import bot.utils.Constants
+import bot.command.CommandManagerService
+import bot.constant.Constants
+import bot.mapper.toTextMessage
+import bot.service.configuration.ConfigurationService
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
@@ -9,15 +11,18 @@ object EventHandlerService {
 
     private val logger = KotlinLogging.logger {}
 
-    private val generalCommandManager = GeneralCommandManager()
-
     fun handleMessageReceivedEvent(event: MessageReceivedEvent) {
         if (event.author.isBot) {
             logger.debug { "Ignoring message from bot: ${event.author.name}" }
             return
         }
-        if (event.message.contentRaw.startsWith(Constants.PREFIX)) {
-            generalCommandManager.handleCommand(event)
+        val rawMessageContent = event.message.contentRaw
+        if (Constants.ZERO_WIDTH_SPACES.any { rawMessageContent.startsWith(it) }) {
+            logger.debug { "Ignoring message which starts width a zero width space character" }
+            return
+        }
+        if (rawMessageContent.startsWith(ConfigurationService.getDiscordBotCommandPrefix())) {
+            CommandManagerService.handleCommand(event.toTextMessage())
         }
     }
 }

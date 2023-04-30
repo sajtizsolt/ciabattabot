@@ -13,7 +13,7 @@ object JdaProviderService {
 
     private lateinit var jda: JDA
 
-    fun getInstance(): JDA {
+    fun getOrCreateInstance(): JDA {
         if (!::jda.isInitialized) {
             jda = buildJda()
         }
@@ -33,7 +33,7 @@ object JdaProviderService {
         return jda
     }
 
-    // TODO: Review which intents are needed
+    // TODO: Review which intents are really needed
     private fun buildIntents() =
         setOf(
             GatewayIntent.GUILD_EMOJIS_AND_STICKERS,

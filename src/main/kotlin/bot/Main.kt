@@ -3,10 +3,10 @@ package bot
 import bot.service.configuration.ConfigurationService
 import bot.service.jda.JdaProviderService
 
-fun main(vararg arguments: String) {
+fun main() {
     try {
         ConfigurationService.validateEnvironmentVariables()
-        JdaProviderService.getInstance()
+        JdaProviderService.getOrCreateInstance()
     } catch (e: Exception) {
         e.printStackTrace()
     }

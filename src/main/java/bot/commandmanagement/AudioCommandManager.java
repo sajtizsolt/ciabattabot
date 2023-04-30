@@ -17,7 +17,6 @@ public class AudioCommandManager extends CommandManager {
     private final LocalFileCommand localFileCommand;
 
     public AudioCommandManager(GuildAudioManager guildAudioManager) {
-
         localFileCommand = new LocalFileCommand(guildAudioManager);
 
         add(new PlayCommand(guildAudioManager));
