@@ -1,6 +1,6 @@
 # :baguette_bread: CiabattaBot
 
-CiabattaBot is a simple open-source Discord bot made in Java using [Java Discord API (JDA)](https://github.com/DV8FromTheWorld/JDA) and [LavaPlayer](https://github.com/sedmelluq/lavaplayer).
+CiabattaBot is a simple open-source Discord bot running on the JVM, implemented using [Java Discord API (JDA)](https://github.com/DV8FromTheWorld/JDA) and [LavaPlayer](https://github.com/sedmelluq/lavaplayer).
 The bot provides various features that range from server moderation to playing music.
 
 ## Used technologies
@@ -33,3 +33,13 @@ command:
 ```shell
 ./gradlew dockerComposeUp
 ```
+
+## Commands
+
+As CiabattaBot is still in development, the list of available commands is not yet complete.
+Currently, the bot supports only the basic commands that are required to play music.
+The following table shows all available commands.
+
+| Command               | Description                       |
+|-----------------------|-----------------------------------|
+| `!play search_string` | Start playing the specified song. |
