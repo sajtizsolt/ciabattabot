@@ -1,6 +1,6 @@
 package bot.service.eventHandler
 
-import bot.command.CommandManagerService
+import bot.service.command.CommandManagerService
 import bot.constant.Constants
 import bot.mapper.toTextMessage
 import bot.service.configuration.ConfigurationService
