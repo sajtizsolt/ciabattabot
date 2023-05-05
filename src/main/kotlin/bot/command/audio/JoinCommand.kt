@@ -2,11 +2,7 @@ package bot.command.audio
 
 import bot.command.Command
 import bot.domain.TextMessage
-import bot.extension.openAudioConnection
-import bot.service.discord.ChannelService
-import bot.service.discord.GuildService
-import bot.service.discord.UserService
-import bot.service.jda.JdaProviderService
+import bot.service.command.CommandExecutorService
 
 class JoinCommand : Command() {
 
@@ -16,10 +12,9 @@ class JoinCommand : Command() {
     )
 
     override fun execute(textMessage: TextMessage) {
-        val voiceChannel = ChannelService.getVoiceChannelByGuildAndActiveUser(
+        CommandExecutorService.joinVoiceChannel(
             guildId = textMessage.guildId,
             userId = textMessage.authorId,
         )
-        voiceChannel.openAudioConnection()
     }
 }
