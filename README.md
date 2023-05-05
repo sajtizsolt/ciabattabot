@@ -40,6 +40,7 @@ As CiabattaBot is still in development, the list of available commands is not ye
 Currently, the bot supports only the basic commands that are required to play music.
 The following table shows all available commands.
 
-| Command               | Description                       |
-|-----------------------|-----------------------------------|
-| `!play search_string` | Start playing the specified song. |
+| Command  | Description                          |
+|----------|--------------------------------------|
+| `!join`  | Join the voice channel of the user.  |
+| `!leave` | Leave the voice channel of the user. |
