@@ -7,7 +7,7 @@ import bot.service.configuration.ConfigurationService
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
-object EventHandlerService {
+object DiscordEventHandlerService {
 
     private val logger = KotlinLogging.logger {}
 

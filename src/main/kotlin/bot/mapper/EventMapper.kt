@@ -9,5 +9,4 @@ internal fun MessageReceivedEvent.toTextMessage() =
         channelId = channel.idLong,
         guildId = guild.idLong,
         rawContent = message.contentRaw,
-        event = this,
     )

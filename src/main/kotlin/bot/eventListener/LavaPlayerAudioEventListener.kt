@@ -11,11 +11,11 @@ class LavaPlayerAudioEventListener : AudioEventAdapter() {
 
     private val logger = KotlinLogging.logger {}
 
-    override fun onPlayerResume(player: AudioPlayer) {
+    override fun onPlayerResume(player: AudioPlayer?) {
         TODO()
     }
 
-    override fun onPlayerPause(player: AudioPlayer) {
+    override fun onPlayerPause(player: AudioPlayer?) {
         TODO()
     }
 

@@ -1,5 +1,6 @@
 package bot.service.audio
 
+import bot.eventListener.LavaPlayerAudioEventListener
 import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
@@ -16,7 +17,9 @@ object AudioPlayerProviderService {
             initializeAudioPlayerManager()
         }
         return audioPlayers.getOrPut(guildId) {
-            audioPlayerManager.createPlayer()
+            val audioPlayer = audioPlayerManager.createPlayer()
+            audioPlayer.addListener { LavaPlayerAudioEventListener() }
+            audioPlayer
         }
     }
 

@@ -7,5 +7,4 @@ data class TextMessage(
     val channelId: Long,
     val guildId: Long,
     val rawContent: String,
-    val event: MessageReceivedEvent, // TODO: Remove "API" object from domain
 )
