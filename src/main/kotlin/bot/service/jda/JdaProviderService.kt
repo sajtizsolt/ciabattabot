@@ -1,6 +1,6 @@
 package bot.service.jda
 
-import bot.eventListener.MainEventListener
+import bot.eventListener.DiscordEventListener
 import bot.service.configuration.ConfigurationService
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
@@ -26,7 +26,7 @@ object JdaProviderService {
             .setMemberCachePolicy(MemberCachePolicy.ALL)
             .enableIntents(GatewayIntent.MESSAGE_CONTENT)
             .disableCache(CacheFlag.SCHEDULED_EVENTS)
-            .addEventListeners(MainEventListener())
+            .addEventListeners(DiscordEventListener())
             .build()
             .awaitReady()
         jda.presence.activity = Activity.listening("your commands")
