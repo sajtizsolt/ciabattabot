@@ -2,10 +2,10 @@ package bot.actualcommands.textcommands;
 
 import bot.commandmanagement.ICommand;
 import bot.utils.Utils;
+import com.google.api.client.util.IOUtils;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
