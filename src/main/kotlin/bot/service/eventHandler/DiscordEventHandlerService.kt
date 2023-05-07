@@ -1,8 +1,8 @@
 package bot.service.eventHandler
 
-import bot.service.command.CommandManagerService
 import bot.constant.Constants
 import bot.mapper.toTextMessage
+import bot.service.command.CommandManagerService
 import bot.service.configuration.ConfigurationService
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
