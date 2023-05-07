@@ -12,27 +12,27 @@ class LavaPlayerAudioEventListener : AudioEventAdapter() {
     private val logger = KotlinLogging.logger {}
 
     override fun onPlayerResume(player: AudioPlayer?) {
-        TODO()
+        logger.info { "onPlayerResume" }
     }
 
     override fun onPlayerPause(player: AudioPlayer?) {
-        TODO()
+        logger.info { "onPlayerPause" }
     }
 
     override fun onTrackStart(player: AudioPlayer?, track: AudioTrack?) {
-        TODO()
+        logger.info { "onTrackStart" }
     }
 
     override fun onTrackEnd(player: AudioPlayer?, track: AudioTrack?, endReason: AudioTrackEndReason?) {
-        // Adapter dummy method
+        logger.info { "onTrackEnd" }
     }
 
     override fun onTrackException(player: AudioPlayer?, track: AudioTrack?, exception: FriendlyException?) {
-        // Adapter dummy method
+        logger.info { "onTrackException" }
     }
 
     override fun onTrackStuck(player: AudioPlayer?, track: AudioTrack?, thresholdMs: Long) {
-        // Adapter dummy method
+        logger.info { "onTrackStuck" }
     }
 
     override fun onTrackStuck(

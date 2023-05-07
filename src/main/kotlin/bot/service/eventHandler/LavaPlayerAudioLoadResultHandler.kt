@@ -28,5 +28,6 @@ class LavaPlayerAudioLoadResultHandler(
 
     override fun loadFailed(exception: FriendlyException?) {
         logger.info { "loadFailed" }
+        logger.error { exception?.stackTrace.contentToString() }
     }
 }

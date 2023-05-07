@@ -13,7 +13,7 @@ class GuildAudioPlayer(
     private val logger = KotlinLogging.logger {}
 
     fun playSong(track: AudioTrack) {
-        if (audioPlayer.startTrack(track, false)) {
+        if (audioPlayer.startTrack(track, true)) {
             logger.info { "Playing song: ${track.info.title}" }
         } else {
             logger.error { "Failed to play song: ${track.info.title}" }

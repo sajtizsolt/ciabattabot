@@ -12,5 +12,10 @@ object GuildAudioPlayerService {
             "$url&c=TVHTML5&cver=7.20190319",
             LavaPlayerAudioLoadResultHandler(guildAudioPlayer),
         )
+        audioPlayerManager.loadItemOrdered(
+            guildAudioPlayer,
+            url,
+            LavaPlayerAudioLoadResultHandler(guildAudioPlayer),
+        )
     }
 }
