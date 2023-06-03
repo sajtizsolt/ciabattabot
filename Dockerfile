@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17.0.6_10-jdk-alpine as builder
+FROM eclipse-temurin:17.0.7_7-jdk-alpine as builder
 
 ENV GRADLE_USER_HOME /app/.gradle
 ENV GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx2g"
@@ -16,7 +16,7 @@ RUN ./gradlew clean shadowJar --no-daemon \
     -PciabattaBotDiscordBotCommandPrefix=${DISCORD_BOT_COMMAND_PREFIX} \
     -PciabattaBotDiscordBotToken=${DISCORD_BOT_TOKEN}
 
-FROM eclipse-temurin:17.0.6_10-jre-alpine
+FROM eclipse-temurin:17.0.7_7-jre-alpine
 
 ARG PROJECT=ciabattabot
 
