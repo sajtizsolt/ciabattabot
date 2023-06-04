@@ -7,40 +7,44 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason
 import mu.KotlinLogging
 
-class LavaPlayerAudioEventListener : AudioEventAdapter() {
+class LavaPlayerAudioEventListener(
+    private val guildId: Long,
+) : AudioEventAdapter() {
 
     private val logger = KotlinLogging.logger {}
 
     override fun onPlayerResume(player: AudioPlayer?) {
-        logger.info { "onPlayerResume" }
+        logger.info { "$guildId player resumed" }
     }
 
     override fun onPlayerPause(player: AudioPlayer?) {
-        logger.info { "onPlayerPause" }
+        logger.info { "$guildId player paused" }
     }
 
     override fun onTrackStart(player: AudioPlayer?, track: AudioTrack?) {
-        logger.info { "onTrackStart" }
+        track?.let {
+            logger.info { "$guildId player started playing ${it.info.title}" }
+        }
     }
 
     override fun onTrackEnd(player: AudioPlayer?, track: AudioTrack?, endReason: AudioTrackEndReason?) {
-        logger.info { "onTrackEnd" }
+        track?.let {
+            logger.info { "$guildId player finished playing ${it.info.title}" }
+        }
     }
 
     override fun onTrackException(player: AudioPlayer?, track: AudioTrack?, exception: FriendlyException?) {
-        logger.info { "onTrackException" }
+        track?.let {
+            logger.error { "$guildId player throw an exception while playing ${it.info.title}" }
+            logger.error { "Exception stacktrace ${exception?.stackTrace}" }
+        }
     }
 
     override fun onTrackStuck(player: AudioPlayer?, track: AudioTrack?, thresholdMs: Long) {
-        logger.info { "onTrackStuck" }
-    }
-
-    override fun onTrackStuck(
-        player: AudioPlayer?,
-        track: AudioTrack?,
-        thresholdMs: Long,
-        stackTrace: Array<StackTraceElement?>?
-    ) {
-        onTrackStuck(player, track, thresholdMs)
+        track?.let {
+            logger.warn {
+                "$guildId player stuck while playing ${it.info.title}"
+            }
+        }
     }
 }

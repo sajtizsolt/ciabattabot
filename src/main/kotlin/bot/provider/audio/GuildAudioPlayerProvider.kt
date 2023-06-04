@@ -14,12 +14,11 @@ object GuildAudioPlayerProvider {
         val audioPlayerManager = AudioPlayerManagerProvider.getOrCreateInstance()
         return audioPlayers.getOrPut(guildId) {
             val audioPlayer = audioPlayerManager.createPlayer()
-            val lavaPlayerAudioEventListener = LavaPlayerAudioEventListener()
-            audioPlayer.addListener(lavaPlayerAudioEventListener) // TODO: Should we add this here?
+            val lavaPlayerAudioEventListener = LavaPlayerAudioEventListener(guildId)
+            audioPlayer.addListener(lavaPlayerAudioEventListener)
             GuildService.getGuildById(guildId).setAudioSendHandler(AudioPlayerSendHandler(audioPlayer))
             GuildAudioPlayer(
                 audioPlayer = audioPlayer,
-                lavaPlayerAudioEventListener = lavaPlayerAudioEventListener,
             )
         }
     }

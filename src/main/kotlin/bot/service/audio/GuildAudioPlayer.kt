@@ -1,13 +1,11 @@
 package bot.service.audio
 
-import bot.eventListener.LavaPlayerAudioEventListener
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
 import mu.KotlinLogging
 
 class GuildAudioPlayer(
     private val audioPlayer: AudioPlayer,
-    private val lavaPlayerAudioEventListener: LavaPlayerAudioEventListener,
 ) {
 
     private val logger = KotlinLogging.logger {}
