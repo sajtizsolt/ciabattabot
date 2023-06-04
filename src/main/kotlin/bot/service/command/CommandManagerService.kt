@@ -2,6 +2,7 @@ package bot.service.command
 
 import bot.command.audio.JoinCommand
 import bot.command.audio.LeaveCommand
+import bot.command.audio.PauseCommand
 import bot.command.audio.PlayCommand
 import bot.domain.TextMessage
 import bot.service.configuration.ConfigurationService
@@ -11,6 +12,7 @@ object CommandManagerService {
     private val commands = setOf(
         JoinCommand(),
         LeaveCommand(),
+        PauseCommand(),
         PlayCommand(),
     )
 

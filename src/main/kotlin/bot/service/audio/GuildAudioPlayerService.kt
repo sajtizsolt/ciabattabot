@@ -18,4 +18,9 @@ object GuildAudioPlayerService {
             LavaPlayerAudioLoadResultHandler(guildAudioPlayer),
         )
     }
+
+    fun pauseSong(guildId: Long) {
+        val guildAudioPlayer = GuildAudioPlayerProvider.getOrCreateInstance(guildId)
+        guildAudioPlayer.pauseSong()
+    }
 }

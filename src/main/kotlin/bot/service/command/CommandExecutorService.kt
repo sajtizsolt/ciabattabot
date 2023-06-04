@@ -23,6 +23,10 @@ object CommandExecutorService {
         voiceChannel.closeAudioConnection()
     }
 
+    fun pauseSong(guildId: Long) {
+        GuildAudioPlayerService.pauseSong(guildId)
+    }
+
     fun playSong(
         authorId: Long,
         channelId: Long,

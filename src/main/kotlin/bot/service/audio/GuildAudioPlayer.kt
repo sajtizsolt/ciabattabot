@@ -12,6 +12,11 @@ class GuildAudioPlayer(
 
     private val logger = KotlinLogging.logger {}
 
+    fun pauseSong() {
+        audioPlayer.isPaused = true
+        logger.info { "Player is paused" }
+    }
+
     fun playSong(track: AudioTrack) {
         if (audioPlayer.startTrack(track, true)) {
             logger.info { "Playing song: ${track.info.title}" }
