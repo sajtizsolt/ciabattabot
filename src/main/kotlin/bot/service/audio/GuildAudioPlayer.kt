@@ -24,4 +24,9 @@ class GuildAudioPlayer(
             logger.error { "Failed to play song: ${track.info.title}" }
         }
     }
+
+    fun resumeSong() {
+        audioPlayer.isPaused = false
+        logger.info { "Player is resumed" }
+    }
 }

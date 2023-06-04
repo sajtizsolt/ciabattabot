@@ -23,4 +23,9 @@ object GuildAudioPlayerService {
         val guildAudioPlayer = GuildAudioPlayerProvider.getOrCreateInstance(guildId)
         guildAudioPlayer.pauseSong()
     }
+
+    fun resumeSong(guildId: Long) {
+        val guildAudioPlayer = GuildAudioPlayerProvider.getOrCreateInstance(guildId)
+        guildAudioPlayer.resumeSong()
+    }
 }

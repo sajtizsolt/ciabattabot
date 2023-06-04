@@ -24,7 +24,9 @@ object CommandExecutorService {
     }
 
     fun pauseSong(guildId: Long) {
-        GuildAudioPlayerService.pauseSong(guildId)
+        GuildAudioPlayerService.pauseSong(
+            guildId = guildId,
+        )
     }
 
     fun playSong(
@@ -36,6 +38,12 @@ object CommandExecutorService {
         GuildAudioPlayerService.addSongToQueue(
             guildId = guildId,
             url = searchString.joinToString(" "),
+        )
+    }
+
+    fun resumeSong(guildId: Long) {
+        GuildAudioPlayerService.resumeSong(
+            guildId = guildId,
         )
     }
 }
