@@ -1,4 +1,4 @@
-package bot.service.jda
+package bot.provider.jda
 
 import bot.eventListener.DiscordEventListener
 import bot.service.configuration.ConfigurationService
@@ -9,12 +9,12 @@ import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
 import net.dv8tion.jda.api.utils.cache.CacheFlag
 
-object JdaProviderService {
+object JdaProvider {
 
     private lateinit var jda: JDA
 
     fun getOrCreateInstance(): JDA {
-        if (!::jda.isInitialized) {
+        if (!JdaProvider::jda.isInitialized) {
             jda = buildJda()
         }
         return jda

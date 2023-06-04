@@ -46,4 +46,10 @@ object CommandExecutorService {
             guildId = guildId,
         )
     }
+
+    fun skipSong(guildId: Long) {
+        GuildAudioPlayerService.skipSong(
+            guildId = guildId,
+        )
+    }
 }

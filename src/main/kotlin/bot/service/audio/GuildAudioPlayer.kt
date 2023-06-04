@@ -29,4 +29,9 @@ class GuildAudioPlayer(
         audioPlayer.isPaused = false
         logger.info { "Player is resumed" }
     }
+
+    fun stopSong() {
+        audioPlayer.stopTrack()
+        logger.info { "Player is stopped" }
+    }
 }

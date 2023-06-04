@@ -1,8 +1,9 @@
-package bot.service.audio
+package bot.provider.audio
 
 import bot.eventListener.LavaPlayerAudioEventListener
 import bot.extension.setAudioSendHandler
 import bot.lavaplayer.AudioPlayerSendHandler
+import bot.service.audio.GuildAudioPlayer
 import bot.service.discord.GuildService
 
 object GuildAudioPlayerProvider {

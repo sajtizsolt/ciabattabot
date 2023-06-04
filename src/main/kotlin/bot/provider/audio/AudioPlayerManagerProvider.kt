@@ -1,4 +1,4 @@
-package bot.service.audio
+package bot.provider.audio
 
 import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
@@ -10,7 +10,7 @@ object AudioPlayerManagerProvider {
     private lateinit var audioPlayerManager: AudioPlayerManager
 
     fun getOrCreateInstance(): AudioPlayerManager {
-        if (!::audioPlayerManager.isInitialized) {
+        if (!AudioPlayerManagerProvider::audioPlayerManager.isInitialized) {
             initializeAudioPlayerManager()
         }
         return audioPlayerManager

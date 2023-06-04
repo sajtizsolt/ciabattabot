@@ -1,10 +1,10 @@
 package bot.service.discord
 
-import bot.service.jda.JdaProviderService
+import bot.provider.jda.JdaProvider
 
 object GuildService {
 
     fun getGuildById(id: Long) =
-        JdaProviderService.getOrCreateInstance().getGuildById(id)
+        JdaProvider.getOrCreateInstance().getGuildById(id)
             ?: throw IllegalArgumentException("Guild with id $id not found")
 }

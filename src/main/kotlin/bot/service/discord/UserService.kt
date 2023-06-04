@@ -1,10 +1,10 @@
 package bot.service.discord
 
-import bot.service.jda.JdaProviderService
+import bot.provider.jda.JdaProvider
 
 object UserService {
 
     fun getUserById(id: Long) =
-        JdaProviderService.getOrCreateInstance().getUserById(id)
+        JdaProvider.getOrCreateInstance().getUserById(id)
             ?: throw IllegalArgumentException("User with id $id not found")
 }
