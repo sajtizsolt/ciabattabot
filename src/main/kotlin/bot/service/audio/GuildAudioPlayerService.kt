@@ -2,6 +2,7 @@ package bot.service.audio
 
 import bot.provider.audio.AudioPlayerManagerProvider
 import bot.provider.audio.GuildAudioPlayerProvider
+import bot.provider.audio.LavaPlayerAudioLoadResultHandlerProvider
 import bot.service.eventHandler.LavaPlayerAudioLoadResultHandler
 
 object GuildAudioPlayerService {
@@ -12,7 +13,7 @@ object GuildAudioPlayerService {
         audioPlayerManager.loadItemOrdered(
             guildAudioPlayer,
             url, // TODO: Do we need this? &c=TVHTML5&cver=7.20190319"
-            LavaPlayerAudioLoadResultHandler(guildAudioPlayer), // TODO: Don't create new handler every time
+            LavaPlayerAudioLoadResultHandlerProvider.getOrCreateInstance(guildId),
         )
     }
 
