@@ -28,7 +28,6 @@ object GuildAudioPlayerService {
     }
 
     fun skipSong(guildId: Long) {
-        val audioPlayerManager = AudioPlayerManagerProvider.getOrCreateInstance()
         val guildAudioPlayer = GuildAudioPlayerProvider.getOrCreateInstance(guildId)
         guildAudioPlayer.stopSong()
     }
