@@ -1,6 +1,5 @@
 package bot.provider.audio
 
-import bot.eventListener.LavaPlayerAudioEventListener
 import bot.extension.setAudioSendHandler
 import bot.lavaplayer.AudioPlayerSendHandler
 import bot.service.audio.GuildAudioPlayer
@@ -14,8 +13,9 @@ object GuildAudioPlayerProvider {
         val audioPlayerManager = AudioPlayerManagerProvider.getOrCreateInstance()
         return audioPlayers.getOrPut(guildId) {
             val audioPlayer = audioPlayerManager.createPlayer()
-            val lavaPlayerAudioEventListener = LavaPlayerAudioEventListener(guildId)
+            val lavaPlayerAudioEventListener = LavaPlayerAudioEventListenerProvider.getOrCreateInstance(guildId)
             audioPlayer.addListener(lavaPlayerAudioEventListener)
+            // TODO: Create Kotlin implementation of AudioSendHandler
             GuildService.getGuildById(guildId).setAudioSendHandler(AudioPlayerSendHandler(audioPlayer))
             GuildAudioPlayer(
                 audioPlayer = audioPlayer,
