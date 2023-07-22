@@ -1,7 +1,7 @@
 # :baguette_bread: CiabattaBot
 
 CiabattaBot is a simple open-source Discord bot running on the JVM, implemented using [Java Discord API (JDA)](https://github.com/DV8FromTheWorld/JDA) and [LavaPlayer](https://github.com/sedmelluq/lavaplayer).
-The bot provides various features that range from server moderation to playing music.
+The bot provides features that allow server members to play audio in voice channels.
 
 ## Used technologies
 
@@ -40,7 +40,10 @@ As CiabattaBot is still in development, the list of available commands is not ye
 Currently, the bot supports only the basic commands that are required to play music.
 The following table shows all available commands.
 
-| Command  | Description                          |
-|----------|--------------------------------------|
-| `!join`  | Join the voice channel of the user.  |
-| `!leave` | Leave the voice channel of the user. |
+| Command   | Description                                                       |
+|-----------|-------------------------------------------------------------------|
+| `!join`   | Join the voice channel of the user.                               |
+| `!leave`  | Leave the voice channel of the user.                              |
+| `!pause`  | Pause the audio track which is currently playing.                 |
+| `!play`   | Add an audio track to the queue and start playing if it is empty. |
+| `!resume` | Resume the audio track which is currently playing.                |
