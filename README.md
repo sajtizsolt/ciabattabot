@@ -1,6 +1,6 @@
 # :baguette_bread: CiabattaBot
 
-CiabattaBot is a simple open-source Discord bot running on the JVM, implemented using [Java Discord API (JDA)](https://github.com/DV8FromTheWorld/JDA) and [LavaPlayer](https://github.com/sedmelluq/lavaplayer).
+CiabattaBot is a simple open-source Discord bot running on the JVM, implemented using [Java Discord API (JDA)](https://github.com/DV8FromTheWorld/JDA) and [LavaPlayer (fork)](https://github.com/Walkyst/lavaplayer-fork).
 The bot provides features that allow server members to play audio in voice channels.
 
 ## Used technologies
