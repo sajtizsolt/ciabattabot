@@ -12,7 +12,7 @@ object GuildAudioPlayerService {
         guildAudioPlayer.pauseAudioTrack()
     }
 
-    fun playAudioTrack(guildId: Long) {
+    fun playNextAudioTrack(guildId: Long) {
         val guildAudioPlayer = GuildAudioPlayerProvider.getOrCreateInstance(guildId)
         if (!guildAudioPlayer.isPlayingTrack()) {
             val audioPlayerManager = AudioPlayerManagerProvider.getOrCreateInstance()

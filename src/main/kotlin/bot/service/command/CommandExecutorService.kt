@@ -38,7 +38,7 @@ object CommandExecutorService {
             guildId = guildId,
             url = audioTrackUri.joinToString(" "),
         )
-        GuildAudioPlayerService.playAudioTrack(
+        GuildAudioPlayerService.playNextAudioTrack(
             guildId = guildId,
         )
     }

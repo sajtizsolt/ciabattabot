@@ -31,7 +31,7 @@ class LavaPlayerAudioEventListener(
     override fun onTrackEnd(player: AudioPlayer?, track: AudioTrack?, endReason: AudioTrackEndReason?) {
         track?.let {
             logger.info { "Player [guildId=$guildId] finished playing ${it.identifier}" }
-            GuildAudioPlayerService.playAudioTrack(guildId)
+            GuildAudioPlayerService.playNextAudioTrack(guildId)
         }
     }
 

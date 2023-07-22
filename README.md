@@ -40,10 +40,11 @@ As CiabattaBot is still in development, the list of available commands is not ye
 Currently, the bot supports only the basic commands that are required to play music.
 The following table shows all available commands.
 
-| Command   | Description                                                       |
-|-----------|-------------------------------------------------------------------|
-| `!join`   | Join the voice channel of the user.                               |
-| `!leave`  | Leave the voice channel of the user.                              |
-| `!pause`  | Pause the audio track which is currently playing.                 |
-| `!play`   | Add an audio track to the queue and start playing if it is empty. |
-| `!resume` | Resume the audio track which is currently playing.                |
+| Command   | Description                                                                                           |
+|-----------|-------------------------------------------------------------------------------------------------------|
+| `!join`   | Join the voice channel of the user.                                                                   |
+| `!leave`  | Leave the voice channel of the user.                                                                  |
+| `!pause`  | Pause the audio track which is currently playing.                                                     |
+| `!play`   | Add an audio track to the queue and start playing if it is empty.                                     |
+| `!resume` | Resume the audio track which is currently playing.                                                    |
+| `!skip`   | Skip the audio track which is currently playing and start playing the next if the queue is not empty. |
