@@ -3,7 +3,6 @@ package bot.service.audio
 import bot.provider.audio.AudioPlayerManagerProvider
 import bot.provider.audio.GuildAudioPlayerProvider
 import bot.provider.audio.LavaPlayerAudioLoadResultHandlerProvider
-import bot.service.AudioTrackQueue
 
 object GuildAudioPlayerService {
 

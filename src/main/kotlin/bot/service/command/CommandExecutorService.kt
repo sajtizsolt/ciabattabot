@@ -2,7 +2,7 @@ package bot.service.command
 
 import bot.extension.closeAudioConnection
 import bot.extension.openAudioConnection
-import bot.service.AudioTrackQueue
+import bot.service.audio.AudioTrackQueue
 import bot.service.audio.GuildAudioPlayerService
 import bot.service.discord.ChannelService
 
