@@ -2,6 +2,7 @@ package bot.service.command
 
 import bot.extension.closeAudioConnection
 import bot.extension.openAudioConnection
+import bot.service.AudioQueueService
 import bot.service.audio.GuildAudioPlayerService
 import bot.service.discord.ChannelService
 
@@ -35,9 +36,12 @@ object CommandExecutorService {
         guildId: Long,
         vararg searchString: String,
     ) {
-        GuildAudioPlayerService.addSongToQueue(
+        AudioQueueService.offer(
             guildId = guildId,
             url = searchString.joinToString(" "),
+        )
+        GuildAudioPlayerService.playSong(
+            guildId = guildId,
         )
     }
 

@@ -1,7 +1,7 @@
 package bot
 
-import bot.service.configuration.ConfigurationService
 import bot.provider.jda.JdaProvider
+import bot.service.configuration.ConfigurationService
 
 fun main() {
     try {

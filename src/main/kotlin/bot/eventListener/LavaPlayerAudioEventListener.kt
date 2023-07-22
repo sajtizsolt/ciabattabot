@@ -1,5 +1,6 @@
 package bot.eventListener
 
+import bot.service.audio.GuildAudioPlayerService
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException
@@ -30,6 +31,7 @@ class LavaPlayerAudioEventListener(
     override fun onTrackEnd(player: AudioPlayer?, track: AudioTrack?, endReason: AudioTrackEndReason?) {
         track?.let {
             logger.info { "$guildId player finished playing ${it.info.title}" }
+            GuildAudioPlayerService.playSong(guildId)
         }
     }
 
