@@ -10,29 +10,29 @@ class GuildAudioPlayer(
 
     private val logger = KotlinLogging.logger {}
 
-    fun isPlaying(): Boolean {
+    fun isPlayingTrack(): Boolean {
         return audioPlayer.playingTrack != null
     }
 
-    fun pauseSong() {
+    fun pauseAudioTrack() {
         audioPlayer.isPaused = true
         logger.info { "Player is paused" }
     }
 
-    fun playSong(track: AudioTrack) {
+    fun playAudioTrack(track: AudioTrack) {
         if (audioPlayer.startTrack(track, true)) {
-            logger.info { "Playing song: ${track.info.title}" }
+            logger.info { "Playing audio track: ${track.identifier}" }
         } else {
-            logger.error { "Failed to play song: ${track.info.title}" }
+            logger.error { "Failed to play audio track: ${track.identifier}" }
         }
     }
 
-    fun resumeSong() {
+    fun resumeAudioTrack() {
         audioPlayer.isPaused = false
         logger.info { "Player is resumed" }
     }
 
-    fun stopSong() {
+    fun stopAudioTrack() {
         audioPlayer.stopTrack()
         logger.info { "Player is stopped" }
     }

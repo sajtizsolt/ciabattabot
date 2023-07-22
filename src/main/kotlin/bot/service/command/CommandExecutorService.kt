@@ -2,7 +2,7 @@ package bot.service.command
 
 import bot.extension.closeAudioConnection
 import bot.extension.openAudioConnection
-import bot.service.AudioQueueService
+import bot.service.AudioTrackQueue
 import bot.service.audio.GuildAudioPlayerService
 import bot.service.discord.ChannelService
 
@@ -24,35 +24,33 @@ object CommandExecutorService {
         voiceChannel.closeAudioConnection()
     }
 
-    fun pauseSong(guildId: Long) {
-        GuildAudioPlayerService.pauseSong(
+    fun pauseAudioTrack(guildId: Long) {
+        GuildAudioPlayerService.pauseAudioTrack(
             guildId = guildId,
         )
     }
 
-    fun playSong(
-        authorId: Long,
-        channelId: Long,
+    fun playAudioTrack(
         guildId: Long,
-        vararg searchString: String,
+        vararg audioTrackUri: String,
     ) {
-        AudioQueueService.offer(
+        AudioTrackQueue.offer(
             guildId = guildId,
-            url = searchString.joinToString(" "),
+            url = audioTrackUri.joinToString(" "),
         )
-        GuildAudioPlayerService.playSong(
-            guildId = guildId,
-        )
-    }
-
-    fun resumeSong(guildId: Long) {
-        GuildAudioPlayerService.resumeSong(
+        GuildAudioPlayerService.playAudioTrack(
             guildId = guildId,
         )
     }
 
-    fun skipSong(guildId: Long) {
-        GuildAudioPlayerService.skipSong(
+    fun resumeAudioTrack(guildId: Long) {
+        GuildAudioPlayerService.resumeAudioTrack(
+            guildId = guildId,
+        )
+    }
+
+    fun skipAudioTrack(guildId: Long) {
+        GuildAudioPlayerService.skipAudioTrack(
             guildId = guildId,
         )
     }

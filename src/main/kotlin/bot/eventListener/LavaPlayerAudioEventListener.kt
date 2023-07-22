@@ -15,29 +15,29 @@ class LavaPlayerAudioEventListener(
     private val logger = KotlinLogging.logger {}
 
     override fun onPlayerResume(player: AudioPlayer?) {
-        logger.info { "$guildId player resumed" }
+        logger.info { "Player [guildId=$guildId] resumed" }
     }
 
     override fun onPlayerPause(player: AudioPlayer?) {
-        logger.info { "$guildId player paused" }
+        logger.info { "Player [guildId=$guildId] paused" }
     }
 
     override fun onTrackStart(player: AudioPlayer?, track: AudioTrack?) {
         track?.let {
-            logger.info { "$guildId player started playing ${it.info.title}" }
+            logger.info { "Player [guildId=$guildId] started playing ${it.identifier}" }
         }
     }
 
     override fun onTrackEnd(player: AudioPlayer?, track: AudioTrack?, endReason: AudioTrackEndReason?) {
         track?.let {
-            logger.info { "$guildId player finished playing ${it.info.title}" }
-            GuildAudioPlayerService.playSong(guildId)
+            logger.info { "Player [guildId=$guildId] finished playing ${it.identifier}" }
+            GuildAudioPlayerService.playAudioTrack(guildId)
         }
     }
 
     override fun onTrackException(player: AudioPlayer?, track: AudioTrack?, exception: FriendlyException?) {
         track?.let {
-            logger.error { "$guildId player throw an exception while playing ${it.info.title}" }
+            logger.error { "Player [guildId=$guildId] throw an exception while playing ${it.identifier}" }
             logger.error { "Exception stacktrace ${exception?.stackTrace}" }
         }
     }
@@ -45,7 +45,7 @@ class LavaPlayerAudioEventListener(
     override fun onTrackStuck(player: AudioPlayer?, track: AudioTrack?, thresholdMs: Long) {
         track?.let {
             logger.warn {
-                "$guildId player stuck while playing ${it.info.title}"
+                "Player [guildId=$guildId] stuck while playing ${it.identifier}"
             }
         }
     }

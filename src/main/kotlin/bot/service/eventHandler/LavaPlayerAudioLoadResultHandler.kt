@@ -15,7 +15,7 @@ class LavaPlayerAudioLoadResultHandler(
 
     override fun trackLoaded(track: AudioTrack?) {
         logger.info { "trackLoaded" }
-        track?.let { guildAudioPlayer.playSong(track) }
+        track?.let { guildAudioPlayer.playAudioTrack(track) }
     }
 
     override fun playlistLoaded(playlist: AudioPlaylist?) {

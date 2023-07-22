@@ -16,11 +16,9 @@ class PlayCommand : Command() {
             guildId = textMessage.guildId,
             userId = textMessage.authorId,
         )
-        CommandExecutorService.playSong(
-            authorId = textMessage.authorId,
-            channelId = textMessage.channelId,
+        CommandExecutorService.playAudioTrack(
             guildId = textMessage.guildId,
-            searchString = textMessage.rawContent.split(" ").drop(1).toTypedArray(),
+            audioTrackUri = textMessage.rawContent.split(" ").drop(1).toTypedArray(),
         )
     }
 }

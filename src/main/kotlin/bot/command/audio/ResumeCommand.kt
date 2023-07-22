@@ -11,7 +11,7 @@ class ResumeCommand : Command() {
     )
 
     override fun execute(textMessage: TextMessage) {
-        CommandExecutorService.resumeSong(
+        CommandExecutorService.resumeAudioTrack(
             guildId = textMessage.guildId,
         )
     }

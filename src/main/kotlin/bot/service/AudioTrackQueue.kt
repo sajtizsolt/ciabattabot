@@ -3,7 +3,7 @@ package bot.service
 import java.util.Queue
 import java.util.concurrent.ArrayBlockingQueue
 
-object AudioQueueService {
+object AudioTrackQueue {
 
     private val queues = hashMapOf<Long, Queue<String>>()
 

@@ -11,7 +11,7 @@ class PauseCommand : Command() {
     )
 
     override fun execute(textMessage: TextMessage) {
-        CommandExecutorService.pauseSong(
+        CommandExecutorService.pauseAudioTrack(
             guildId = textMessage.guildId,
         )
     }
