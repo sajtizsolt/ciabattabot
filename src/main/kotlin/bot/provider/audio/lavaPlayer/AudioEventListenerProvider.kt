@@ -1,8 +1,8 @@
-package bot.provider.audio
+package bot.provider.audio.lavaPlayer
 
 import bot.eventListener.LavaPlayerAudioEventListener
 
-object LavaPlayerAudioEventListenerProvider {
+object AudioEventListenerProvider {
 
     private val eventListeners = hashMapOf<Long, LavaPlayerAudioEventListener>()
 

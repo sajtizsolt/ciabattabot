@@ -1,8 +1,8 @@
 package bot.service.audio
 
-import bot.provider.audio.AudioPlayerManagerProvider
+import bot.provider.audio.lavaPlayer.AudioPlayerManagerProvider
 import bot.provider.audio.GuildAudioPlayerProvider
-import bot.provider.audio.LavaPlayerAudioLoadResultHandlerProvider
+import bot.provider.audio.lavaPlayer.AudioLoadResultHandlerProvider
 
 object GuildAudioPlayerService {
 
@@ -18,7 +18,7 @@ object GuildAudioPlayerService {
             audioPlayerManager.loadItemOrdered(
                 guildId,
                 AudioTrackQueue.poll(guildId), // TODO: Do we need this? &c=TVHTML5&cver=7.20190319"
-                LavaPlayerAudioLoadResultHandlerProvider.getOrCreateInstance(guildId),
+                AudioLoadResultHandlerProvider.getOrCreateInstance(guildId),
             )
         }
     }

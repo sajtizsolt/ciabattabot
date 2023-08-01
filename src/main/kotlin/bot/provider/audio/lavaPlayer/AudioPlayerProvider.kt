@@ -1,8 +1,8 @@
-package bot.provider.audio
+package bot.provider.audio.lavaPlayer
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
 
-object LavaPlayerAudioPlayerProvider {
+object AudioPlayerProvider {
 
     private val audioPlayers = hashMapOf<Long, AudioPlayer>()
 

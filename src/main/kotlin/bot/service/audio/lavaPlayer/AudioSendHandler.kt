@@ -1,11 +1,11 @@
-package bot.service.audio
+package bot.service.audio.lavaPlayer
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
 import com.sedmelluq.discord.lavaplayer.track.playback.MutableAudioFrame
 import net.dv8tion.jda.api.audio.AudioSendHandler
 import java.nio.ByteBuffer
 
-class LavaPlayerAudioSendHandler(
+class AudioSendHandler(
     private val audioPlayer: AudioPlayer,
 ) : AudioSendHandler {
 

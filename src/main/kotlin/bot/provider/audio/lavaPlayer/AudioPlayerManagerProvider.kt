@@ -1,4 +1,4 @@
-package bot.provider.audio
+package bot.provider.audio.lavaPlayer
 
 import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager

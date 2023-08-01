@@ -1,4 +1,4 @@
-package bot.service.eventHandler
+package bot.service.eventHandler.lavaPlayer
 
 import bot.service.audio.GuildAudioPlayer
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler
@@ -7,7 +7,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
 import mu.KotlinLogging
 
-class LavaPlayerAudioLoadResultHandler(
+class AudioLoadResultHandler(
     private val guildAudioPlayer: GuildAudioPlayer,
 ) : AudioLoadResultHandler {
 
