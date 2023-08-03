@@ -11,7 +11,7 @@ lavaplayer-fork-version = "1.4.2"
 logback-classic-version = "1.4.7"
 mockk-version = "1.13.4"
 shadow-version = "8.1.1"
-zip4j-version = "2.8.0"
+zip4j-version = "2.11.5"
 
 [plugins]
 johnrengelman-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow-version" }
