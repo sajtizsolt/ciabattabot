@@ -45,6 +45,6 @@ tasks {
             "DISCORD_BOT_COMMAND_PREFIX" to ciabattaBotDiscordBotCommandPrefix,
             "DISCORD_BOT_TOKEN" to ciabattaBotDiscordBotToken,
         )
-        commandLine = "docker-compose -f ${project.rootDir}/docker-compose.yml up -d --build".split(" ")
+        commandLine = "docker compose -f ${project.rootDir}\\docker-compose.yml up -d --build".split(" ")
     }
 }

@@ -1,11 +1,10 @@
-FROM eclipse-temurin:17.0.7_7-jdk-alpine as builder
+FROM eclipse-temurin:17.0.12_7-jdk-focal as builder
 
 ENV GRADLE_USER_HOME /app/.gradle
 ENV GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx2g"
 
 ARG DISCORD_BOT_TOKEN
 ARG DISCORD_BOT_COMMAND_PREFIX
-ARG PROJECT=ciabattabot
 
 WORKDIR /app
 
@@ -16,9 +15,7 @@ RUN ./gradlew clean shadowJar --no-daemon \
     -PciabattaBotDiscordBotCommandPrefix=${DISCORD_BOT_COMMAND_PREFIX} \
     -PciabattaBotDiscordBotToken=${DISCORD_BOT_TOKEN}
 
-FROM eclipse-temurin:17.0.7_7-jre-alpine
-
-ARG PROJECT=ciabattabot
+FROM eclipse-temurin:17.0.12_7-jre-focal
 
 COPY --from=builder /app/build/libs/CiabattaBot-all.jar /CiabattaBot-all.jar
 
