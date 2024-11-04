@@ -36,6 +36,10 @@ command:
 ./gradlew dockerComposeUp
 ```
 
+### How to get Proof of Origin tokens
+
+To get the required Proof of Origin tokens, you can use the [YouTube Trusted Session Generator](https://github.com/iv-org/youtube-trusted-session-generator).
+
 ## Commands
 
 As CiabattaBot is still in development, the list of available commands is not yet complete.
