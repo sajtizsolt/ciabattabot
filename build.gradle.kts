@@ -9,13 +9,12 @@ plugins {
 dependencies {
     implementation(libs.apache.commons.lang3)
     implementation(libs.discord.api)
-    implementation(libs.google.cloud.translate)
     implementation(libs.jikan4java)
     implementation(libs.json)
     implementation(libs.kotlin.logging)
-    implementation(libs.lavaplayer.fork)
+    implementation(libs.lavalink.youtube.v2)
+    implementation(libs.lavaplayer)
     implementation(libs.logback.classic)
-    implementation(libs.zip4j)
 
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.mockk)
@@ -37,13 +36,17 @@ tasks {
     }
 
     register<Exec>("dockerComposeUp") {
-        val ciabattaBotDiscordBotCommandPrefix: String? by project
+        val ciabattaBotCommandPrefix: String? by project
         val ciabattaBotDiscordBotToken: String by project
+        val ciabattaBotPoToken: String by project
+        val ciabattaBotPoVisitorData: String by project
         group = "docker"
         description = "Starts the docker-compose.yml file"
         environment = environment + mapOf(
-            "DISCORD_BOT_COMMAND_PREFIX" to ciabattaBotDiscordBotCommandPrefix,
-            "DISCORD_BOT_TOKEN" to ciabattaBotDiscordBotToken,
+            "CIABATTA_BOT_COMMAND_PREFIX" to ciabattaBotCommandPrefix,
+            "CIABATTA_BOT_DISCORD_BOT_TOKEN" to ciabattaBotDiscordBotToken,
+            "CIABATTA_BOT_PO_TOKEN" to ciabattaBotPoToken,
+            "CIABATTA_BOT_PO_VISITOR_DATA" to ciabattaBotPoVisitorData,
         )
         commandLine = "docker compose -f ${project.rootDir}\\docker-compose.yml up -d --build".split(" ")
     }

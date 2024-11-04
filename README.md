@@ -16,10 +16,12 @@ CiabattaBot is designed to get its configuration from environment variables.
 As you might want to run the bot using Docker, the ideal way to provide configuration is to set some variables in your `gradle.properties` file.
 The following table shows all available configuration keys.
 
-| `gradle.properties` key              | Environment variable         | Required?          | Default value | Description                             |
-|--------------------------------------|------------------------------|--------------------|---------------|-----------------------------------------|
-| `ciabattaBotDiscordBotToken`         | `DISCORD_BOT_TOKEN`          | :heavy_check_mark: | -             | The bot token of your Discord bot.      |
-| `ciabattaBotDiscordBotCommandPrefix` | `DISCORD_BOT_COMMAND_PREFIX` | :x:                | `!`           | The command prefix of your Discord bot. |
+| `gradle.properties` key      | Environment variable              | Required?          | Default value | Description                                                           |
+|------------------------------|-----------------------------------|--------------------|---------------|-----------------------------------------------------------------------|
+| `ciabattaBotDiscordBotToken` | `CIABATTA_BOT_DISCORD_BOT_TOKEN`  | :heavy_check_mark: | -             | The bot token of your Discord bot.                                    |
+| `ciabattaBotCommandPrefix`   | `CIABATTA_BOT_COMMAND_PREFIX`     | :x:                | `!`           | The command prefix of your Discord bot.                               |
+| `ciabattaBotPoToken`         | `CIABATTA_BOT_PO_TOKEN`           | :heavy_check_mark: | -             | A proof of origin token required to stream music from YouTube.        |
+| `ciabattaBotPoVisitorData`   | `CIABATTA_BOT_PO_VISITOR_DATA`    | :heavy_check_mark: | -             | A proof of origin visitor data required to stream music from YouTube. |
 
 You can find your `gradle.properties` file in the following locations, depending on your operating system:
 

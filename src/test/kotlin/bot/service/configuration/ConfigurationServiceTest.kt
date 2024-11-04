@@ -81,4 +81,52 @@ class ConfigurationServiceTest {
         // When & Then
         assertThrows<IllegalStateException> { ConfigurationService.getDiscordBotToken() }
     }
+
+    @Test
+    fun `when po token is set, then its value is returned by the getter`() {
+        // Given
+        val expectedValue = "expected-value"
+        mockkObject(ConfigurationService)
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_TOKEN_VARIABLE_NAME) } returns expectedValue
+
+        // When
+        val actualValue = ConfigurationService.getPoToken()
+
+        // Then
+        assertEquals(expectedValue, actualValue)
+    }
+
+    @Test
+    fun `when po token is missing, then an exception is thrown by the getter`() {
+        // Given
+        mockkObject(ConfigurationService)
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_TOKEN_VARIABLE_NAME) } returns null
+
+        // When & Then
+        assertThrows<IllegalStateException> { ConfigurationService.getPoToken() }
+    }
+
+    @Test
+    fun `when po visitor data is set, then its value is returned by the getter`() {
+        // Given
+        val expectedValue = "expected-value"
+        mockkObject(ConfigurationService)
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_VISITOR_DATA_VARIABLE_NAME) } returns expectedValue
+
+        // When
+        val actualValue = ConfigurationService.getPoVisitorData()
+
+        // Then
+        assertEquals(expectedValue, actualValue)
+    }
+
+    @Test
+    fun `when po visitor data is missing, then an exception is thrown by the getter`() {
+        // Given
+        mockkObject(ConfigurationService)
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_VISITOR_DATA_VARIABLE_NAME) } returns null
+
+        // When & Then
+        assertThrows<IllegalStateException> { ConfigurationService.getPoVisitorData() }
+    }
 }
