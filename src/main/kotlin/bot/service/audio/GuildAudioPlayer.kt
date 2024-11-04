@@ -2,38 +2,39 @@ package bot.service.audio
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
-import mu.KotlinLogging
+import org.slf4j.LoggerFactory
 
 class GuildAudioPlayer(
     private val audioPlayer: AudioPlayer,
 ) {
-
-    private val logger = KotlinLogging.logger {}
-
     fun isPlayingTrack(): Boolean {
         return audioPlayer.playingTrack != null
     }
 
     fun pauseAudioTrack() {
         audioPlayer.isPaused = true
-        logger.info { "Player is paused" }
+        LOGGER.info("Player is paused")
     }
 
     fun playAudioTrack(track: AudioTrack) {
         if (audioPlayer.startTrack(track, true)) {
-            logger.info { "Playing audio track: ${track.identifier}" }
+            LOGGER.info("Playing audio track: {}", track.identifier)
         } else {
-            logger.error { "Failed to play audio track: ${track.identifier}" }
+            LOGGER.error("Failed to play audio track: {}", track.identifier)
         }
     }
 
     fun resumeAudioTrack() {
         audioPlayer.isPaused = false
-        logger.info { "Player is resumed" }
+        LOGGER.info("Player is resumed")
     }
 
     fun stopAudioTrack() {
         audioPlayer.stopTrack()
-        logger.info { "Player is stopped" }
+        LOGGER.info("Player is stopped")
+    }
+
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(GuildAudioPlayer::class.java)
     }
 }

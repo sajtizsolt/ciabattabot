@@ -1,8 +1,8 @@
 package bot.service.audio
 
-import bot.provider.audio.lavaPlayer.AudioPlayerManagerProvider
 import bot.provider.audio.GuildAudioPlayerProvider
 import bot.provider.audio.lavaPlayer.AudioLoadResultHandlerProvider
+import bot.provider.audio.lavaPlayer.AudioPlayerManagerProvider
 
 object GuildAudioPlayerService {
 

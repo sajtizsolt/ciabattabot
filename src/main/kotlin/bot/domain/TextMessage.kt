@@ -1,8 +1,9 @@
 package bot.domain
 
 data class TextMessage(
-    val authorId: Long,
-    val channelId: Long,
     val guildId: Long,
+    val channelId: Long,
+    val authorId: Long,
+    val messageId: Long,
     val rawContent: String,
 )

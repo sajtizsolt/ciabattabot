@@ -9,12 +9,11 @@ plugins {
 dependencies {
     implementation(libs.apache.commons.lang3)
     implementation(libs.discord.api)
-    implementation(libs.jikan4java)
-    implementation(libs.json)
-    implementation(libs.kotlin.logging)
     implementation(libs.lavalink.youtube.v2)
     implementation(libs.lavaplayer)
     implementation(libs.logback.classic)
+    implementation(libs.logback.core)
+    implementation(libs.logstash.logback.encoder)
 
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.mockk)

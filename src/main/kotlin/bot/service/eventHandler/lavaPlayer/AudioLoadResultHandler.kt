@@ -5,29 +5,31 @@ import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
-import mu.KotlinLogging
+import org.slf4j.LoggerFactory
 
 class AudioLoadResultHandler(
     private val guildAudioPlayer: GuildAudioPlayer,
 ) : AudioLoadResultHandler {
 
-    private val logger = KotlinLogging.logger {}
-
     override fun trackLoaded(track: AudioTrack?) {
-        logger.info { "trackLoaded" }
+        LOGGER.info("trackLoaded")
         track?.let { guildAudioPlayer.playAudioTrack(track) }
     }
 
     override fun playlistLoaded(playlist: AudioPlaylist?) {
-        logger.info { "playlistLoaded" }
+        LOGGER.info("playlistLoaded")
     }
 
     override fun noMatches() {
-        logger.info { "noMatches" }
+        LOGGER.info("noMatches")
     }
 
     override fun loadFailed(exception: FriendlyException?) {
-        logger.info { "loadFailed" }
-        logger.error { exception?.stackTrace.contentToString() }
+        LOGGER.info("loadFailed")
+        LOGGER.error(exception?.stackTrace.contentToString())
+    }
+    
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(AudioLoadResultHandler::class.java)
     }
 }

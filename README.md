@@ -1,6 +1,8 @@
 # :baguette_bread: CiabattaBot
 
-CiabattaBot is a simple open-source Discord bot running on the JVM, implemented using [Java Discord API (JDA)](https://github.com/DV8FromTheWorld/JDA) and [LavaPlayer (fork)](https://github.com/Walkyst/lavaplayer-fork).
+CiabattaBot is a simple open-source Discord bot running on the JVM, implemented
+using [Java Discord API (JDA)](https://github.com/DV8FromTheWorld/JDA)
+and [LavaPlayer (fork)](https://github.com/Walkyst/lavaplayer-fork).
 The bot provides features that allow server members to play audio in voice channels.
 
 ## Used technologies
@@ -13,15 +15,16 @@ The bot provides features that allow server members to play audio in voice chann
 ## How to run
 
 CiabattaBot is designed to get its configuration from environment variables.
-As you might want to run the bot using Docker, the ideal way to provide configuration is to set some variables in your `gradle.properties` file.
+As you might want to run the bot using Docker, the ideal way to provide configuration is to set some variables in your
+`gradle.properties` file.
 The following table shows all available configuration keys.
 
-| `gradle.properties` key      | Environment variable              | Required?          | Default value | Description                                                           |
-|------------------------------|-----------------------------------|--------------------|---------------|-----------------------------------------------------------------------|
-| `ciabattaBotDiscordBotToken` | `CIABATTA_BOT_DISCORD_BOT_TOKEN`  | :heavy_check_mark: | -             | The bot token of your Discord bot.                                    |
-| `ciabattaBotCommandPrefix`   | `CIABATTA_BOT_COMMAND_PREFIX`     | :x:                | `!`           | The command prefix of your Discord bot.                               |
-| `ciabattaBotPoToken`         | `CIABATTA_BOT_PO_TOKEN`           | :heavy_check_mark: | -             | A proof of origin token required to stream music from YouTube.        |
-| `ciabattaBotPoVisitorData`   | `CIABATTA_BOT_PO_VISITOR_DATA`    | :heavy_check_mark: | -             | A proof of origin visitor data required to stream music from YouTube. |
+| `gradle.properties` key      | Environment variable             | Required?          | Default value | Description                                                           |
+|------------------------------|----------------------------------|--------------------|---------------|-----------------------------------------------------------------------|
+| `ciabattaBotDiscordBotToken` | `CIABATTA_BOT_DISCORD_BOT_TOKEN` | :heavy_check_mark: | -             | The bot token of your Discord bot.                                    |
+| `ciabattaBotCommandPrefix`   | `CIABATTA_BOT_COMMAND_PREFIX`    | :x:                | `!`           | The command prefix of your Discord bot.                               |
+| `ciabattaBotPoToken`         | `CIABATTA_BOT_PO_TOKEN`          | :heavy_check_mark: | -             | A proof of origin token required to stream music from YouTube.        |
+| `ciabattaBotPoVisitorData`   | `CIABATTA_BOT_PO_VISITOR_DATA`   | :heavy_check_mark: | -             | A proof of origin visitor data required to stream music from YouTube. |
 
 You can find your `gradle.properties` file in the following locations, depending on your operating system:
 
@@ -38,7 +41,8 @@ command:
 
 ### How to get Proof of Origin tokens
 
-To get the required Proof of Origin tokens, you can use the [YouTube Trusted Session Generator](https://github.com/iv-org/youtube-trusted-session-generator).
+To get the required Proof of Origin tokens, you can use
+the [YouTube Trusted Session Generator](https://github.com/iv-org/youtube-trusted-session-generator).
 
 ## Commands
 

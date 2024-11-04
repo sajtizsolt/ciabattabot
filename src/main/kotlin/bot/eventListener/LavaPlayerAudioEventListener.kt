@@ -6,47 +6,48 @@ import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason
-import mu.KotlinLogging
+import org.slf4j.LoggerFactory
 
 class LavaPlayerAudioEventListener(
     private val guildId: Long,
 ) : AudioEventAdapter() {
-
-    private val logger = KotlinLogging.logger {}
-
     override fun onPlayerResume(player: AudioPlayer?) {
-        logger.info { "Player [guildId=$guildId] resumed" }
+        LOGGER.info("Player [guildId=$guildId] resumed")
     }
 
     override fun onPlayerPause(player: AudioPlayer?) {
-        logger.info { "Player [guildId=$guildId] paused" }
+        LOGGER.info("Player [guildId=$guildId] paused")
     }
 
     override fun onTrackStart(player: AudioPlayer?, track: AudioTrack?) {
         track?.let {
-            logger.info { "Player [guildId=$guildId] started playing ${it.identifier}" }
+            LOGGER.info("Player [guildId=$guildId] started playing ${it.identifier}")
         }
     }
 
     override fun onTrackEnd(player: AudioPlayer?, track: AudioTrack?, endReason: AudioTrackEndReason?) {
         track?.let {
-            logger.info { "Player [guildId=$guildId] finished playing ${it.identifier}" }
+            LOGGER.info("Player [guildId=$guildId] finished playing ${it.identifier}")
             GuildAudioPlayerService.playNextAudioTrack(guildId)
         }
     }
 
     override fun onTrackException(player: AudioPlayer?, track: AudioTrack?, exception: FriendlyException?) {
         track?.let {
-            logger.error { "Player [guildId=$guildId] throw an exception while playing ${it.identifier}" }
-            logger.error { "Exception stacktrace ${exception?.stackTrace}" }
+            LOGGER.error("Player [guildId=$guildId] throw an exception while playing ${it.identifier}")
+            LOGGER.error("Exception stacktrace ${exception?.stackTrace}")
         }
     }
 
     override fun onTrackStuck(player: AudioPlayer?, track: AudioTrack?, thresholdMs: Long) {
         track?.let {
-            logger.warn {
+            LOGGER.warn(
                 "Player [guildId=$guildId] stuck while playing ${it.identifier}"
-            }
+            )
         }
+    }
+
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(LavaPlayerAudioEventListener::class.java)
     }
 }

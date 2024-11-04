@@ -1,6 +1,6 @@
 package bot.service.audio
 
-import java.util.Queue
+import java.util.*
 import java.util.concurrent.ArrayBlockingQueue
 
 object AudioTrackQueue {

@@ -1,15 +1,13 @@
 [versions]
-apache-commons-lang3-version = "3.12.0"
-discord-api-version = "5.0.0-beta.12"
-jikan4java-version = "v1.4.2"
-json-version = "20230618"
-junit-version = "5.9.2"
-kotlin-version = "1.9.0"
-kotlin-logging-version = "3.0.5"
+apache-commons-lang3-version = "3.17.0"
+discord-api-version = "5.2.0"
+junit-version = "5.11.3"
+kotlin-version = "2.0.21"
 lavalink-youtube-version = "1.8.3"
 lavaplayer-version = "2.2.2"
-logback-classic-version = "1.4.7"
-mockk-version = "1.13.4"
+logback-version = "1.5.12"
+logstash-logback-encoder-version = "8.0"
+mockk-version = "1.13.13"
 shadow-version = "8.1.1"
 
 [plugins]
@@ -19,12 +17,11 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
 [libraries]
 apache-commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "apache-commons-lang3-version" }
 discord-api = { module = "net.dv8tion:JDA", version.ref = "discord-api-version" }
-jikan4java = { module = "com.github.Doomsdayrs:Jikan4java", version.ref = "jikan4java-version" }
-json = { module = "org.json:json", version.ref = "json-version" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
-kotlin-logging = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlin-logging-version" }
 lavalink-youtube-v2 = { module = "dev.lavalink.youtube:v2", version.ref = "lavalink-youtube-version" }
 lavaplayer = { module = "dev.arbjerg:lavaplayer", version.ref = "lavaplayer-version" }
-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic-version" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
+logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback-version" }
+logstash-logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstash-logback-encoder-version" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk-version" }

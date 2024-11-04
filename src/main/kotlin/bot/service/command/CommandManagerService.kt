@@ -1,13 +1,9 @@
 package bot.service.command
 
-import bot.command.audio.JoinCommand
-import bot.command.audio.LeaveCommand
-import bot.command.audio.PauseCommand
-import bot.command.audio.PlayCommand
-import bot.command.audio.ResumeCommand
-import bot.command.audio.SkipCommand
+import bot.command.audio.*
 import bot.domain.TextMessage
 import bot.service.configuration.ConfigurationService
+import org.slf4j.MDC
 
 object CommandManagerService {
 
@@ -21,6 +17,11 @@ object CommandManagerService {
     )
 
     fun handleCommand(textMessage: TextMessage) {
+        MDC.put("guildId", textMessage.guildId.toString())
+        MDC.put("channelId", textMessage.channelId.toString())
+        MDC.put("authorId", textMessage.authorId.toString())
+        MDC.put("messageId", textMessage.messageId.toString())
+
         val (command, _) = textMessage.rawContent.split(" ")
         val commandWithoutPrefix = command.removePrefix(ConfigurationService.getDiscordBotCommandPrefix())
         commands
