@@ -3,7 +3,11 @@ plugins {
     application
     java
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.johnrengelman.shadow)
+    alias(libs.plugins.gradleup.shadow)
+}
+
+kotlin {
+    jvmToolchain(25)
 }
 
 dependencies {
@@ -11,6 +15,11 @@ dependencies {
     implementation(libs.discord.api)
     implementation(libs.lavalink.youtube.v2)
     implementation(libs.lavaplayer)
+    implementation(libs.libdave.adapter.jda)
+    implementation(libs.libdave.impl.jni)
+    runtimeOnly(libs.libdave.natives.linux)
+    runtimeOnly(libs.libdave.natives.win)
+    runtimeOnly(libs.libdave.natives.darwin)
     implementation(libs.logback.classic)
     implementation(libs.logback.core)
     implementation(libs.logstash.logback.encoder)
@@ -19,6 +28,7 @@ dependencies {
     testImplementation(libs.mockk)
 
     testRuntimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 application {
@@ -35,18 +45,20 @@ tasks {
     }
 
     register<Exec>("dockerComposeUp") {
-        val ciabattaBotCommandPrefix: String? by project
-        val ciabattaBotDiscordBotToken: String by project
-        val ciabattaBotPoToken: String by project
-        val ciabattaBotPoVisitorData: String by project
+        val ciabattaBotCommandPrefix = project.findProperty("ciabattaBotCommandPrefix")?.toString() ?: "!"
+        val ciabattaBotDiscordBotToken = project.findProperty("ciabattaBotDiscordBotToken")?.toString() ?: ""
+        val ciabattaBotPoToken = project.findProperty("ciabattaBotPoToken")?.toString() ?: ""
+        val ciabattaBotPoVisitorData = project.findProperty("ciabattaBotPoVisitorData")?.toString() ?: ""
         group = "docker"
         description = "Starts the docker-compose.yml file"
-        environment = environment + mapOf(
-            "CIABATTA_BOT_COMMAND_PREFIX" to ciabattaBotCommandPrefix,
-            "CIABATTA_BOT_DISCORD_BOT_TOKEN" to ciabattaBotDiscordBotToken,
-            "CIABATTA_BOT_PO_TOKEN" to ciabattaBotPoToken,
-            "CIABATTA_BOT_PO_VISITOR_DATA" to ciabattaBotPoVisitorData,
+        environment(
+            mapOf(
+                "CIABATTA_BOT_COMMAND_PREFIX" to ciabattaBotCommandPrefix,
+                "CIABATTA_BOT_DISCORD_BOT_TOKEN" to ciabattaBotDiscordBotToken,
+                "CIABATTA_BOT_PO_TOKEN" to ciabattaBotPoToken,
+                "CIABATTA_BOT_PO_VISITOR_DATA" to ciabattaBotPoVisitorData,
+            )
         )
-        commandLine = "docker compose -f ${project.rootDir}\\docker-compose.yml up -d --build".split(" ")
+        commandLine("docker", "compose", "-f", "${project.rootDir}/docker-compose.yml", "up", "-d", "--build")
     }
 }

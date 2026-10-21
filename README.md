@@ -8,7 +8,7 @@ The bot provides features that allow server members to play audio in voice chann
 ## Used technologies
 
 - Gradle
-- Java 17
+- Java 25
 - Kotlin
 - Docker
 
