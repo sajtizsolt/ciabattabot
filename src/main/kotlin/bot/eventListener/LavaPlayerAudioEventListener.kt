@@ -34,8 +34,7 @@ class LavaPlayerAudioEventListener(
 
     override fun onTrackException(player: AudioPlayer?, track: AudioTrack?, exception: FriendlyException?) {
         track?.let {
-            LOGGER.error("Player [guildId=$guildId] throw an exception while playing ${it.identifier}")
-            LOGGER.error("Exception stacktrace ${exception?.stackTrace}")
+            LOGGER.error("Player [guildId=$guildId] threw an exception while playing ${it.identifier}", exception)
         }
     }
 

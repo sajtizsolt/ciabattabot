@@ -8,7 +8,7 @@ The bot provides features that allow server members to play audio in voice chann
 ## Used technologies
 
 - Gradle
-- Java 17
+- Java 25
 - Kotlin
 - Docker
 
@@ -19,12 +19,12 @@ As you might want to run the bot using Docker, the ideal way to provide configur
 `gradle.properties` file.
 The following table shows all available configuration keys.
 
-| `gradle.properties` key      | Environment variable             | Required?          | Default value | Description                                                           |
-|------------------------------|----------------------------------|--------------------|---------------|-----------------------------------------------------------------------|
-| `ciabattaBotDiscordBotToken` | `CIABATTA_BOT_DISCORD_BOT_TOKEN` | :heavy_check_mark: | -             | The bot token of your Discord bot.                                    |
-| `ciabattaBotCommandPrefix`   | `CIABATTA_BOT_COMMAND_PREFIX`    | :x:                | `!`           | The command prefix of your Discord bot.                               |
-| `ciabattaBotPoToken`         | `CIABATTA_BOT_PO_TOKEN`          | :heavy_check_mark: | -             | A proof of origin token required to stream music from YouTube.        |
-| `ciabattaBotPoVisitorData`   | `CIABATTA_BOT_PO_VISITOR_DATA`   | :heavy_check_mark: | -             | A proof of origin visitor data required to stream music from YouTube. |
+| `gradle.properties` key               | Environment variable                      | Required?          | Default value | Description                                                                                                    |
+|---------------------------------------|-------------------------------------------|--------------------|---------------|----------------------------------------------------------------------------------------------------------------|
+| `ciabattaBotDiscordBotToken`          | `CIABATTA_BOT_DISCORD_BOT_TOKEN`          | :heavy_check_mark: | -             | The bot token of your Discord bot.                                                                             |
+| `ciabattaBotCommandPrefix`            | `CIABATTA_BOT_COMMAND_PREFIX`             | :x:                | `!`           | The command prefix of your Discord bot.                                                                        |
+| `ciabattaBotYoutubeOauthRefreshToken` | `CIABATTA_BOT_YOUTUBE_OAUTH_REFRESH_TOKEN`| :x:                | -             | Optional YouTube OAuth2 refresh token to authenticate YouTube playback.                                        |
+| `ciabattaBotEnableYoutubeOauth`       | `CIABATTA_BOT_ENABLE_YOUTUBE_OAUTH`        | :x:                | `false`       | Set to `true` to initiate YouTube OAuth2 device authorization flow on startup.                                 |
 
 You can find your `gradle.properties` file in the following locations, depending on your operating system:
 
@@ -39,10 +39,17 @@ command:
 ./gradlew dockerComposeUp
 ```
 
-### How to get Proof of Origin tokens
+### YouTube OAuth2 Authentication
 
-To get the required Proof of Origin tokens, you can use
-the [YouTube Trusted Session Generator](https://github.com/iv-org/youtube-trusted-session-generator).
+If YouTube blocks playback (e.g. when hosting on datacenter IPs), you can authenticate via OAuth2:
+
+1. Set `ciabattaBotEnableYoutubeOauth=true` (or `CIABATTA_BOT_ENABLE_YOUTUBE_OAUTH=true`).
+2. Start the bot and check the console logs for the device authorization prompt:
+   ```
+   Go to https://www.google.com/device and enter code: XXXX-XXXX
+   ```
+3. Open the link in a browser, enter the code, and sign in with a Google account.
+4. The bot will log your refresh token. Save it to your `gradle.properties` (`ciabattaBotYoutubeOauthRefreshToken=<refresh-token>`) or environment (`CIABATTA_BOT_YOUTUBE_OAUTH_REFRESH_TOKEN`), then set `ciabattaBotEnableYoutubeOauth=false`.
 
 ## Commands
 

@@ -3,6 +3,9 @@ package bot.service.configuration
 import io.mockk.every
 import io.mockk.mockkObject
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -83,50 +86,36 @@ class ConfigurationServiceTest {
     }
 
     @Test
-    fun `when po token is set, then its value is returned by the getter`() {
+    fun `when youtube oauth refresh token is set, then its value is returned by the getter`() {
         // Given
-        val expectedValue = "expected-value"
+        val expectedValue = "expected-refresh-token"
         mockkObject(ConfigurationService)
-        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_TOKEN_VARIABLE_NAME) } returns expectedValue
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.YOUTUBE_OAUTH_REFRESH_TOKEN_VARIABLE_NAME) } returns expectedValue
 
         // When
-        val actualValue = ConfigurationService.getPoToken()
+        val actualValue = ConfigurationService.getYoutubeOauthRefreshToken()
 
         // Then
         assertEquals(expectedValue, actualValue)
     }
 
     @Test
-    fun `when po token is missing, then an exception is thrown by the getter`() {
+    fun `when enable youtube oauth is set to true, then true is returned by the getter`() {
         // Given
         mockkObject(ConfigurationService)
-        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_TOKEN_VARIABLE_NAME) } returns null
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.ENABLE_YOUTUBE_OAUTH_VARIABLE_NAME) } returns "true"
 
         // When & Then
-        assertThrows<IllegalStateException> { ConfigurationService.getPoToken() }
+        assertTrue(ConfigurationService.isYoutubeOauthEnabled())
     }
 
     @Test
-    fun `when po visitor data is set, then its value is returned by the getter`() {
-        // Given
-        val expectedValue = "expected-value"
-        mockkObject(ConfigurationService)
-        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_VISITOR_DATA_VARIABLE_NAME) } returns expectedValue
-
-        // When
-        val actualValue = ConfigurationService.getPoVisitorData()
-
-        // Then
-        assertEquals(expectedValue, actualValue)
-    }
-
-    @Test
-    fun `when po visitor data is missing, then an exception is thrown by the getter`() {
+    fun `when enable youtube oauth is missing, then false is returned by the getter`() {
         // Given
         mockkObject(ConfigurationService)
-        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.PO_VISITOR_DATA_VARIABLE_NAME) } returns null
+        every { ConfigurationService.getEnvironmentVariable(ConfigurationService.ENABLE_YOUTUBE_OAUTH_VARIABLE_NAME) } returns null
 
         // When & Then
-        assertThrows<IllegalStateException> { ConfigurationService.getPoVisitorData() }
+        assertFalse(ConfigurationService.isYoutubeOauthEnabled())
     }
 }
