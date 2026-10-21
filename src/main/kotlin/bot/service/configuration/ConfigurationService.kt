@@ -9,15 +9,13 @@ object ConfigurationService {
 
     internal const val DISCORD_BOT_COMMAND_PREFIX_VARIABLE_NAME = "CIABATTA_BOT_COMMAND_PREFIX"
     internal const val DISCORD_BOT_TOKEN_VARIABLE_NAME = "CIABATTA_BOT_DISCORD_BOT_TOKEN"
-    internal const val PO_TOKEN_VARIABLE_NAME = "CIABATTA_BOT_PO_TOKEN"
-    internal const val PO_VISITOR_DATA_VARIABLE_NAME = "CIABATTA_BOT_PO_VISITOR_DATA"
+    internal const val YOUTUBE_OAUTH_REFRESH_TOKEN_VARIABLE_NAME = "CIABATTA_BOT_YOUTUBE_OAUTH_REFRESH_TOKEN"
+    internal const val ENABLE_YOUTUBE_OAUTH_VARIABLE_NAME = "CIABATTA_BOT_ENABLE_YOUTUBE_OAUTH"
 
     internal const val DISCORD_BOT_COMMAND_PREFIX_DEFAULT_VALUE = "!"
 
     internal val MANDATORY_VARIABLES = setOf(
         DISCORD_BOT_TOKEN_VARIABLE_NAME,
-        PO_TOKEN_VARIABLE_NAME,
-        PO_VISITOR_DATA_VARIABLE_NAME,
     )
 
     fun validateEnvironmentVariables() {
@@ -33,11 +31,11 @@ object ConfigurationService {
     fun getDiscordBotToken(): String =
         getValueOrThrowException(DISCORD_BOT_TOKEN_VARIABLE_NAME)
 
-    fun getPoToken(): String =
-        getValueOrThrowException(PO_TOKEN_VARIABLE_NAME)
+    fun getYoutubeOauthRefreshToken(): String? =
+        getEnvironmentVariable(YOUTUBE_OAUTH_REFRESH_TOKEN_VARIABLE_NAME)
 
-    fun getPoVisitorData(): String =
-        getValueOrThrowException(PO_VISITOR_DATA_VARIABLE_NAME)
+    fun isYoutubeOauthEnabled(): Boolean =
+        getEnvironmentVariable(ENABLE_YOUTUBE_OAUTH_VARIABLE_NAME)?.toBoolean() ?: false
 
     internal fun getEnvironmentVariable(variableName: String): String? =
         System.getenv(variableName)

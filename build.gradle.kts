@@ -47,16 +47,16 @@ tasks {
     register<Exec>("dockerComposeUp") {
         val ciabattaBotCommandPrefix = project.findProperty("ciabattaBotCommandPrefix")?.toString() ?: "!"
         val ciabattaBotDiscordBotToken = project.findProperty("ciabattaBotDiscordBotToken")?.toString() ?: ""
-        val ciabattaBotPoToken = project.findProperty("ciabattaBotPoToken")?.toString() ?: ""
-        val ciabattaBotPoVisitorData = project.findProperty("ciabattaBotPoVisitorData")?.toString() ?: ""
+        val ciabattaBotYoutubeOauthRefreshToken = project.findProperty("ciabattaBotYoutubeOauthRefreshToken")?.toString() ?: ""
+        val ciabattaBotEnableYoutubeOauth = project.findProperty("ciabattaBotEnableYoutubeOauth")?.toString() ?: "false"
         group = "docker"
         description = "Starts the docker-compose.yml file"
         environment(
             mapOf(
                 "CIABATTA_BOT_COMMAND_PREFIX" to ciabattaBotCommandPrefix,
                 "CIABATTA_BOT_DISCORD_BOT_TOKEN" to ciabattaBotDiscordBotToken,
-                "CIABATTA_BOT_PO_TOKEN" to ciabattaBotPoToken,
-                "CIABATTA_BOT_PO_VISITOR_DATA" to ciabattaBotPoVisitorData,
+                "CIABATTA_BOT_YOUTUBE_OAUTH_REFRESH_TOKEN" to ciabattaBotYoutubeOauthRefreshToken,
+                "CIABATTA_BOT_ENABLE_YOUTUBE_OAUTH" to ciabattaBotEnableYoutubeOauth,
             )
         )
         commandLine("docker", "compose", "-f", "${project.rootDir}/docker-compose.yml", "up", "-d", "--build")

@@ -11,10 +11,6 @@
     </root>
 
     <appender name="STDOUT" class="ConsoleAppender">
-        <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{HH:mm:ss.SSS}] [%thread] %-5level %logger{36} MDC=%X{user} - %msg%n</pattern>
-        </encoder>
         <encoder class="LoggingEventCompositeJsonEncoder">
             <providers>
                 <timestamp/>
@@ -23,6 +19,7 @@
                 <loggerName/>
                 <message/>
                 <mdc/>
+                <stackTrace/>
             </providers>
         </encoder>
     </appender>
